@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DialogX - Formulário</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #6A1B9A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: #DDE1FF;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 550px;
+            padding: 40px 35px;
+            position: relative;
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .purple-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: #6A1B9A;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            justify-content: flex-start;
+            padding-left: 10px;
+        }
+        
+        .logo {
+            margin-right: 15px;
+        }
+        
+        .logo-img {
+            height: 90px;
+            width: auto;
+        }
+        
+        .title {
+            color: #6A1B9A;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: left;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .question-group {
+            margin-bottom: 35px;
+        }
+        
+        .question-group h2 {
+            font-size: 20px;
+            color: #4A148C;
+            margin-bottom: 20px;
+            font-weight: 600;
+            padding-left: 5px;
+            border-left: 4px solid #9C27B0;
+            padding-left: 12px;
+        }
+        
+        .options {
+            margin-left: 20px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .option:hover {
+            background-color: rgba(106, 27, 154, 0.08);
+        }
+        
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #6A1B9A;
+            border-radius: 5px;
+            margin-right: 15px;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+            background-color: white;
+            margin-top: 2px;
+        }
+        
+        input[type="checkbox"]:checked {
+            background-color: #6A1B9A;
+            border-color: #4A148C;
+        }
+        
+        input[type="checkbox"]:checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .option label {
+            color: #4A148C;
+            cursor: pointer;
+            line-height: 1.5;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #9C27B0;
+            margin: 30px 0;
+            opacity: 0.6;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        
+        .nav-button {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            background-color: #6A1B9A;
+            color: white;
+            flex: 1;
+            box-shadow: 0 4px 8px rgba(106, 27, 154, 0.2);
+        }
+        
+        .nav-button:hover {
+            background-color: #4A148C;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(106, 27, 154, 0.4);
+        }
+        
+        .nav-button:active {
+            transform: translateY(-1px);
+        }
+        
+        /* ===== MEDIA QUERIES APENAS PARA MOBILE ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+                background-color: #DDE1FF;
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 35px 30px; /* Aumentei o padding */
+                border-radius: 0;
+                min-height: 100vh;
+                box-shadow: none;
+                width: 100%;
+            }
+            
+            .purple-bar {
+                display: none;
+            }
+            
+            .header {
+                justify-content: flex-start;
+                margin-bottom: 30px; /* Aumentei a margem */
+                padding-left: 0;
+            }
+            
+            .logo {
+                margin-right: 18px; /* Aumentei ainda mais o espaçamento */
+            }
+            
+            .logo-img {
+                height: 100px; /* Aumentei bastante a logo: 70px → 100px */
+            }
+            
+            .title {
+                font-size: 28px; /* Aumentei bastante o texto: 22px → 28px */
+                text-align: left;
+            }
+            
+            .question-group h2 {
+                font-size: 20px; /* Aumentei um pouco */
+                margin-bottom: 18px;
+            }
+            
+            .options {
+                margin-left: 10px;
+            }
+            
+            .option {
+                padding: 12px 15px;
+                margin-bottom: 18px;
+            }
+            
+            input[type="checkbox"] {
+                width: 24px; /* Mantive o tamanho original */
+                height: 24px;
+                margin-right: 15px;
+            }
+            
+            .option label {
+                font-size: 16px; /* Aumentei o texto das opções */
+                line-height: 1.5;
+            }
+            
+            hr {
+                margin: 30px 0;
+            }
+            
+            .navigation {
+                flex-direction: row;
+                gap: 20px; /* Aumentei o espaçamento entre botões */
+                margin-top: 25px;
+            }
+            
+            .nav-button {
+                padding: 14px 25px; /* Aumentei os botões */
+                font-size: 16px;
+                border-radius: 25px;
+            }
+        }
+        
+        /* Ajustes para telas muito pequenas (celulares menores) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 25px; /* Aumentei o padding */
+            }
+            
+            .logo-img {
+                height: 90px; /* Aumentei bastante: 60px → 90px */
+            }
+            
+            .title {
+                font-size: 26px; /* Aumentei bastante: 20px → 26px */
+            }
+            
+            .logo {
+                margin-right: 15px;
+            }
+            
+            .question-group h2 {
+                font-size: 18px;
+            }
+            
+            .option {
+                padding: 10px 12px;
+            }
+            
+            input[type="checkbox"] {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .option label {
+                font-size: 15px;
+            }
+            
+            .navigation {
+                gap: 15px;
+            }
+            
+            .nav-button {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+        }
+
+        /* Ajuste extra para celulares muito pequenos */
+        @media (max-width: 360px) {
+            .logo-img {
+                height: 80px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .title {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="purple-bar"></div>
+        
+        <div class="header">
+            <div class="logo">
+                <!-- Logo do DialogX - substitua pelo caminho correto se necessário -->
+                <img src="dialogx.jpeg" alt="Logo DialogX" class="logo-img">
+            </div>
+            <h1 class="title">DialogX</h1>
+        </div>
+        
+        <div class="content">
+            <div>
+                <div class="question-group">
+                    <h2>Marque uma das opções:</h2>
+                    <h2>Como o cliente vai ser tratado?</h2>
+                    
+                    <div class="options">
+                        <div class="option">
+                            <input type="checkbox" id="option1" name="treatment">
+                            <label for="option1">De forma direta</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="checkbox" id="option2" name="treatment">
+                            <label for="option2">De forma mais detalhada e atenciosa</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="checkbox" id="option3" name="treatment">
+                            <label for="option3">O cliente escolhe a opção de acordo com sua necessidade</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div class="question-group">
+                    <h2>Qual protocolo seguir caso o cliente queira e fechar um contrato ou venda?</h2>
+                    
+                    <div class="options">
+                        <div class="option">
+                            <input type="checkbox" id="option4" name="protocol">
+                            <label for="option4">Ao concluir uma venda ou contrato a conversa é direcionada a algum funcionário da empresa que vai concluir essa venda</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="checkbox" id="option5" name="protocol">
+                            <label for="option5">Ao concluir uma venda o próprio chatbot pode fechar a venda e conversa</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-button" id="back-button">voltar</button>
+                <button class="nav-button" id="next-button">próximo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script para garantir que apenas uma opção seja selecionada por grupo
+        document.querySelectorAll('input[name="treatment"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.querySelectorAll('input[name="treatment"]').forEach(other => {
+                        if (other !== this) other.checked = false;
+                    });
+                }
+            });
+        });
+        
+        document.querySelectorAll('input[name="protocol"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.querySelectorAll('input[name="protocol"]').forEach(other => {
+                        if (other !== this) other.checked = false;
+                    });
+                }
+            });
+        });
+        
+        // Adicionando interatividade aos botões
+        document.getElementById('back-button').addEventListener('click', function() {
+            alert('Voltando para a tela anterior...');
+        });
+        
+        document.getElementById('next-button').addEventListener('click', function() {
+            // Verificar se pelo menos uma opção foi selecionada em cada grupo
+            const treatmentSelected = document.querySelector('input[name="treatment"]:checked');
+            const protocolSelected = document.querySelector('input[name="protocol"]:checked');
+            
+            if (!treatmentSelected || !protocolSelected) {
+                alert('Por favor, selecione uma opção em cada pergunta antes de continuar.');
+                return;
+            }
+            
+            alert('Opções salvas! Prosseguindo para a próxima etapa...');
+        });
+    </script>
+</body>
+</html>
