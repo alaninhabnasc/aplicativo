@@ -1,127 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DialogX - Formulário</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DialogX - Formulário</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-body {
-    background-color: #DDE1FF; /* só roxinho claro */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100svh;
-    overflow: hidden;
-}
+        body {
+            background-color: #6A1B9A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-.container {
-    background-color: #DDE1FF;
-    width: 100%;
-    max-width: 550px;
-    min-height: 100svh;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-}
+        .container {
+            background-color: #DDE1FF;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 550px;
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+        }
 
-.header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-}
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
 
-.logo-img {
-    height: 90px;
-    margin-right: 15px;
-}
+        .logo-img {
+            height: 90px;
+            margin-right: 15px;
+        }
 
-.title {
-    color: #6A1B9A;
-    font-size: 24px;
-    font-weight: 700;
-}
+        .title {
+            color: #6A1B9A;
+            font-size: 24px;
+            font-weight: 700;
+        }
 
-.question-group {
-    margin-bottom: 35px;
-}
+        .question-group {
+            margin-bottom: 35px;
+        }
 
-.question-group h2 {
-    font-size: 18px;
-    color: #4A148C;
-    margin-bottom: 15px;
-    font-weight: 600;
-    border-left: 4px solid #9C27B0;
-    padding-left: 12px;
-}
+        .question-group h2 {
+            font-size: 20px;
+            color: #4A148C;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-left: 4px solid #9C27B0;
+            padding-left: 12px;
+        }
 
-.options {
-    margin-left: 10px;
-}
+        .options {
+            margin-left: 10px;
+        }
 
-.option {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 18px;
-    cursor: pointer;
-}
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
-input[type="checkbox"] {
-    appearance: none;
-    width: 26px;
-    height: 26px;
-    border: 2px solid #6A1B9A;
-    border-radius: 6px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
+        /* CHECKBOX ARRUMADO */
+        input[type="checkbox"] {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #6A1B9A;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            flex-shrink: 0;
+        }
 
-input[type="checkbox"]:checked {
-    background-color: #6A1B9A;
-}
+        input[type="checkbox"]:checked {
+            background-color: #6A1B9A;
+        }
 
-input[type="checkbox"]:checked::after {
-    content: "✓";
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-}
+        input[type="checkbox"]:checked::after {
+            content: "✓";
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
 
-.option label {
-    color: #4A148C;
-    font-size: 16px;
-    cursor: pointer;
-}
+        .option label {
+            color: #4A148C;
+            font-size: 16px;
+            cursor: pointer;
+            line-height: 1.4;
+        }
 
-.navigation {
-    display: flex;
-    gap: 20px;
-    margin-top: auto;
-}
+        .navigation {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
 
-.nav-button {
-    flex: 1;
-    padding: 14px;
-    border: none;
-    border-radius: 25px;
-    background-color: #6A1B9A;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-}
-</style>
+        .nav-button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 25px;
+            background-color: #6A1B9A;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* 🔹 QUANDO INSPECIONAR / MOBILE */
+        @media (max-width: 768px) {
+            body {
+                background-color: #DDE1FF;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                min-height: 100vh;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -129,7 +151,7 @@ input[type="checkbox"]:checked::after {
 <div class="container">
 
     <div class="header">
-        <img src="dialogx.jpeg" class="logo-img" alt="DialogX">
+        <img src="dialogx.jpeg" class="logo-img">
         <h1 class="title">DialogX</h1>
     </div>
 
@@ -181,36 +203,38 @@ input[type="checkbox"]:checked::after {
 </div>
 
 <script>
-/* Apenas uma opção por grupo */
-function grupoUnico(nome) {
-    document.querySelectorAll(`input[name="${nome}"]`).forEach(cb => {
-        cb.addEventListener("change", function () {
-            document.querySelectorAll(`input[name="${nome}"]`).forEach(o => {
+    // Apenas uma opção por grupo
+    document.querySelectorAll('input[name="treatment"]').forEach(cb => {
+        cb.addEventListener('change', function () {
+            document.querySelectorAll('input[name="treatment"]').forEach(o => {
                 if (o !== this) o.checked = false;
             });
         });
     });
-}
 
-grupoUnico("treatment");
-grupoUnico("protocol");
+    document.querySelectorAll('input[name="protocol"]').forEach(cb => {
+        cb.addEventListener('change', function () {
+            document.querySelectorAll('input[name="protocol"]').forEach(o => {
+                if (o !== this) o.checked = false;
+            });
+        });
+    });
 
-/* Navegação */
-document.getElementById("back-button").onclick = () => {
-    window.location.href = "../app2/index.html";
-};
+    document.getElementById("back-button").onclick = () => {
+        window.location.href = "../app2/index.html";
+    };
 
-document.getElementById("next-button").onclick = () => {
-    const t = document.querySelector('input[name="treatment"]:checked');
-    const p = document.querySelector('input[name="protocol"]:checked');
+    document.getElementById("next-button").onclick = () => {
+        const t = document.querySelector('input[name="treatment"]:checked');
+        const p = document.querySelector('input[name="protocol"]:checked');
 
-    if (!t || !p) {
-        alert("Selecione uma opção em cada pergunta.");
-        return;
-    }
+        if (!t || !p) {
+            alert("Selecione uma opção em cada pergunta.");
+            return;
+        }
 
-    window.location.href = "../cad-concluido/index.html";
-};
+        window.location.href = "../cad-concluido/index.html";
+    };
 </script>
 
 </body>
